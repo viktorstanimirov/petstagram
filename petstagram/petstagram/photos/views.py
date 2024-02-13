@@ -1,10 +1,16 @@
+from django.shortcuts import render
+
+
 def add_photo(request):
-    pass
+    context = {}
+    return render(request, "photos/photo-add-page.html", context)
 
 
-def photo_details_page(request):
-    pass
+def photo_details_page(request, pk):
+    context = {}
+    return render(request, "photos/photo-details-page.html", context)
 
 
-def photo_edit_page(request):
-    pass
+def photo_edit_page(request, pk):
+    context = {}
+    return render(request, "photos/photo-edit-page.html", context)
