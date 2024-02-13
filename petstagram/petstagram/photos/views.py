@@ -1,3 +1,10 @@
-from django.shortcuts import render
+def add_photo(request):
+    pass
 
-# Create your views here.
+
+def photo_details_page(request):
+    pass
+
+
+def photo_edit_page(request):
+    pass
