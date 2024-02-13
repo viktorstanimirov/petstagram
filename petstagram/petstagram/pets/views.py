@@ -1,14 +1,21 @@
-def pet_add_page(request):
-    return None
+from django.shortcuts import render
 
 
-def pet_details_page(request):
-    return None
+def create_pet(request):
+    context = {}
+    return render(request, "pets/create_pet.html", context)
 
 
-def pet_edit_page(request):
-    return None
+def details_pet(request, username, pet_slug):
+    context = {}
+    return render(request, "pets/details_pet.html", context)
 
 
-def pet_delete_page(request):
-    return None
+def edit_pet(request,username, pet_slug):
+    context = {}
+    return render(request, "pets/edit_pet.html", context)
+
+
+def delete_pet(request,username, pet_slug):
+    context = {}
+    return render(request, "pets/delete_pet.html", context)
