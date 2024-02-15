@@ -4,9 +4,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-++sxsd_i=@1bwv1&hwuaod+bk-non+msv2e&p$n&g1)2io+=+*'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 MY_APPS = [
     'petstagram.pets',
