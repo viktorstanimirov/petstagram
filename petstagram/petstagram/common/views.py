@@ -17,4 +17,4 @@ class IndexView(views.ListView):
         .prefetch_related("pets") \
         .prefetch_related("photolike_set")
 
-    template_name = "common/home-page.html"
+    template_name = "common/index.html"
