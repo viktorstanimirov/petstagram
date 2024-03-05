@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 
-def add_photo(request):
+def create_photo(request):
     context = {}
     return render(request, "photos/photo-add-page.html", context)
 

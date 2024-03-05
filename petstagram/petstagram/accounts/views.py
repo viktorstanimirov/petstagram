@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def signup_user(request):
@@ -13,7 +13,7 @@ def signin_user(request):
 
 def signout_user(request):
     context = {}
-    pass
+    return redirect('index')
 
 
 def details_profile(request, pk):
