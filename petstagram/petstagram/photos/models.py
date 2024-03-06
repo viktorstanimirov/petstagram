@@ -6,19 +6,27 @@ from petstagram.photos.validators import validate_file_size
 
 
 class Photo(models.Model):
+    MAX_DESCRIPTION_LENGTH = 300
+    MIN_DESCRIPTION_LENGTH = 10
+    MAX_LOCATION_LENGTH = 30
+
     photo = models.ImageField(
         validators=(validate_file_size,)
     )
 
     description = models.TextField(
-        max_length=300,
-        validators=(MinLengthValidator(10),),
+        max_length=MAX_DESCRIPTION_LENGTH,
+        validators=(
+            MinLengthValidator(
+                MIN_DESCRIPTION_LENGTH
+            ),
+        ),
         blank=True,
         null=True,
     )
 
     location = models.CharField(
-        max_length=30,
+        max_length=MAX_LOCATION_LENGTH,
         blank=True,
         null=True
     )

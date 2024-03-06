@@ -3,8 +3,10 @@ from django.template.defaultfilters import slugify
 
 
 class Pet(models.Model):
+    MAX_NAME_LENGTH = 30
+
     name = models.CharField(
-        max_length=30,
+        max_length=MAX_NAME_LENGTH,
     )
 
     personal_photo = models.URLField()

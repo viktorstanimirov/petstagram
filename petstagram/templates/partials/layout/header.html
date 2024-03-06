@@ -27,12 +27,12 @@
                     </li>
                     {% if request.user.is_authenticated %}
                         <li class="nav-item">
-                            <a href="{% url 'details profile' pk=2 %}">
+                            <a href="{% url 'details_profile' pk=2 %}">
                                 <i>Profile</i>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'signout user' %}">
+                            <a href="{% url 'signout_user' %}">
                                 <i>Log out</i>
                             </a>
                         </li>
