@@ -31,7 +31,7 @@ class Photo(models.Model):
         null=True
     )
 
-    tagged_pets = models.ManyToManyField(
+    pets = models.ManyToManyField(
         Pet,
         blank=True
     )
