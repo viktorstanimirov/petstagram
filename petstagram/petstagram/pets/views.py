@@ -9,8 +9,12 @@ def create_pet(request):
 
 
 def details_pet(request, username, pet_slug):
+    pet = Pet.objects.get(slug=pet_slug)
+    all_photos = pet.photo_set.all()
+
     context = {
-        'pet': Pet.objects.get(slug=pet_slug)
+        'pet': pet,
+        'all_photos': all_photos,
     }
     return render(request, "pets/details_pet.html", context)
 

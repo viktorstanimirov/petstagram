@@ -31,7 +31,8 @@
                     </div>
                     <div class="data">
                         <!-- Pet Total Photos -->
-                        <span>{{ pet.petphoto_set.count }}</span>
+                        <span>{{ pet.photo_set.count }}</span>
+
                         <p>photos</p>
                     </div>
                 </div>
@@ -43,8 +44,8 @@
 
             <!-- IF Photos Start Pet Photos Post Section -->
 
-            
-            {% include "partials/pet_photo_list.html" with photo_list=petphoto_set.all  %}
+
+            {% include "partials/pet_photo_list.html" with photo_list=photo_set.all %}
 
         </div>
     </div>

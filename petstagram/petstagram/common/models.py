@@ -10,18 +10,22 @@ class Comment(models.Model):
         max_length=MAX_TEXT_LENGTH,
     )
 
-    date_time_of_publication = models.DateTimeField(
+    created_at = models.DateTimeField(
         auto_now_add=True,
     )
 
-    to_photo = models.ForeignKey(
+    modified_at = models.DateTimeField(
+        auto_now=True,
+    )
+
+    pet_photo = models.ForeignKey(
         Photo,
         on_delete=models.CASCADE,
     )
 
 
-class Like(models.Model):
-    to_photo = models.ForeignKey(
+class PhotoLike(models.Model):
+    pet_photo = models.ForeignKey(
         Photo,
-        on_delete=models.CASCADE,
+        on_delete=models.DO_NOTHING,
     )
