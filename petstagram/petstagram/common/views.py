@@ -20,4 +20,4 @@ def like_pet_photo(request, pk):
     else:
         PhotoLike.objects.create(pet_photo_id=pk)
 
-    return redirect('photo_details', pk=pk)
+    return redirect(request.META.get('HTTP_REFERER') + f"#photo-{pk}")
