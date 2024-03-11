@@ -1,10 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
+from petstagram.photos.forms import PhotoCreteForm
 from petstagram.photos.models import Photo
 
 
 def create_photo(request):
-    context = {}
+    form = PhotoCreteForm(request.POST or None, request.FILES or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('photo_details', form.instance.pk)
+
+    context = {
+        'form': form
+    }
     return render(request, "photos/photo-add-page.html", context)
 
 

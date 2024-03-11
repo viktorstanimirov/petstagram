@@ -10,7 +10,7 @@ def create_pet(request):
     if request.method == "POST":
         if pet_form.is_valid():
             created_pet = pet_form.save()
-            return redirect("pet details", username="Viktor", pet_slug=created_pet.slug)
+            return redirect("details_pet", username="Viktor", pet_slug=created_pet.slug)
 
     context = {
         "pet_form": pet_form,

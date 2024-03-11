@@ -11,6 +11,7 @@ class Photo(models.Model):
     MAX_LOCATION_LENGTH = 30
 
     photo = models.ImageField(
+        upload_to="media",
         validators=(validate_file_size,)
     )
 
