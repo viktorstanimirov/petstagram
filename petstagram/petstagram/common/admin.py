@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from petstagram.common.models import Comment, PhotoLike
+from petstagram.common.models import PhotoLike, Comment
 
 
 @admin.register(Comment)

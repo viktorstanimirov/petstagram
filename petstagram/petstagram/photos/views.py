@@ -29,6 +29,7 @@ def photo_edit_page(request, pk):
     return render(request, "photos/photo-edit-page.html", context)
 
 
-
-
-
+def photo_delete(request, pk):
+    photo = Photo.objects.get(pk=pk)
+    photo.delete()
+    return redirect('index')

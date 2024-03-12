@@ -70,13 +70,7 @@
                 </p>
             </a>
         {% endfor %}
-        {#        <!-- Link to Second Tagged Pet Details Page-->#}
-        {#        <a href="#">#}
-        {#            <p class="message">#}
-        {#                <b>Some other fish</b>#}
-        {#            </p>#}
-        {#        </a>#}
-        {#        <!-- End Tagged Pets -->#}
+    
 
         <!-- Link to Photo Details Page -->
         <a href="{% url "photo_details" pk=photo.pk %}">
@@ -90,12 +84,11 @@
         <div class="addComments">
 
             <!-- Start Add Comments Form -->
-            <form method="post" action="#">
-                <label for="id_body">Body:</label>
-                <textarea name="body" cols="40" rows="10" placeholder="Add comment..." maxlength="300"
-                          required="" id="id_body"></textarea>
-                <button type="submit">Post</button>
-            </form>
+             <form method="post" action="{% url 'add_comment' photo.id %}">
+                            {% csrf_token %}
+                            {{ comment_form.as_p }}
+                            <button type="submit">Post</button>
+             </form>
             <!-- End Add Comments Form -->
 
         </div>

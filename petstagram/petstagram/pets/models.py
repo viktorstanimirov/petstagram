@@ -1,5 +1,10 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.template.defaultfilters import slugify
+
+# from petstagram.core.models import IHaveUser
+
+UserModel = get_user_model()
 
 
 class Pet(models.Model):
