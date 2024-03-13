@@ -20,6 +20,7 @@ def create_photo(request):
 def photo_details(request, pk):
     context = {
         'pet_photo': Photo.objects.get(pk=pk)
+
     }
     return render(request, "photos/photo-details-page.html", context)
 

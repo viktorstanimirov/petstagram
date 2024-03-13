@@ -70,7 +70,7 @@
                 </p>
             </a>
         {% endfor %}
-    
+
 
         <!-- Link to Photo Details Page -->
         <a href="{% url "photo_details" pk=photo.pk %}">
@@ -79,17 +79,21 @@
 
         <!-- Date of Publication -->
         <h5 class="postTime">{{ photo.date_of_publication|date:"d/m/Y" }}</h5>
-        <h5 class="comments">Comments: {{ photo.comment_set.last}}</h5>
+        {% if photo.comment_set.last %}
+            <h5 class="comments">Comments: {{ photo.comment_set.last }}</h5>
+        {% else %}
+
+        {% endif %}
 
         <!-- Start Add Comments Section -->
         <div class="addComments">
 
             <!-- Start Add Comments Form -->
-             <form method="post" action="{% url 'add_comment' photo.id %}">
-                            {% csrf_token %}
-                            {{ comment_form.as_p }}
-                            <button type="submit">Post</button>
-             </form>
+            <form method="post" action="{% url 'add_comment' photo.id %}">
+                {% csrf_token %}
+                {{ comment_form }}
+                <button type="submit">Post</button>
+            </form>
             <!-- End Add Comments Form -->
 
         </div>
