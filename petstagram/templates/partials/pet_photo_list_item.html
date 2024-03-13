@@ -79,6 +79,7 @@
 
         <!-- Date of Publication -->
         <h5 class="postTime">{{ photo.date_of_publication|date:"d/m/Y" }}</h5>
+        <h5 class="comments">Comments: {{ photo.comment_set.last}}</h5>
 
         <!-- Start Add Comments Section -->
         <div class="addComments">
