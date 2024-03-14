@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic as views
 
 from petstagram.pets.forms import PetCreateForm, PetEditForm, PetDeleteForm
@@ -50,24 +50,27 @@ class PetEditView(views.UpdateView):
         })
 
 
-def delete_pet(request, username, pet_slug):
-    pet = Pet.objects.filter(slug=pet_slug).get()
-    pet_form = PetDeleteForm(request.POST or None, instance=pet)
+class PetDeleteView(views.DeleteView):
+    model = Pet
+    form_class = PetDeleteForm
+    template_name = "pets/delete_pet.html"
 
-    if request.method == "POST":
-        pet_form.save()
-        return redirect("index")
+    slug_url_kwarg = "pet_slug"
 
-    context = {
-        "pet_form": pet_form,
-        "username": username,
-        "pet": pet,
+    success_url = reverse_lazy("index")
+
+    extra_context = {
+        "username": "Viktor",
     }
 
-    return render(request, "pets/delete_pet.html", context)
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["instance"] = self.get_object()
+        return kwargs
 
 
-'''Function Based View For: Create Pet, Details Pet, Edit Pet'''
+'''Class Based View For: Create Pet, Details Pet, Edit Pet and Delete Pet'''
+
 
 # def create_pet(request):
 #     pet_form = PetCreateForm(request.POST or None)
@@ -112,3 +115,23 @@ def delete_pet(request, username, pet_slug):
 #     }
 #
 #     return render(request, "pets/edit_pet.html", context)
+
+
+# def delete_pet(request, username, pet_slug):
+#     pet = Pet.objects.filter(slug=pet_slug).get()
+#     pet_form = PetDeleteForm(request.POST or None, instance=pet)
+#
+#     if request.method == "POST":
+#         pet_form.save()
+#         return redirect("index")
+#
+#     context = {
+#         "pet_form": pet_form,
+#         "username": username,
+#         "pet": pet,
+#     }
+#
+#     return render(request, "pets/delete_pet.html", context)
+#
+#
+# '''Function Based View For: Create Pet, Details Pet, Edit Pet'''
