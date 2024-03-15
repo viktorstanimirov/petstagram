@@ -26,6 +26,11 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
     )
 
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.RESTRICT,
+    )
+
     def __str__(self):
         return self.text
 
