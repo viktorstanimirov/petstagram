@@ -30,13 +30,6 @@ class IndexView(views.ListView):
         queryset = super().get_queryset()
         queryset = self.filter_by_pet_name_pattern(queryset)
 
-        # if self.pet_name_pattern:
-        #     self.request.session['pet_name_pattern'] = self.pet_name_pattern
-        # else:
-        #     self.request.session.pop('pet_name_pattern', None)
-        #
-        # pet_name_session = self.request.session.get('pet_name_pattern', None)
-
         return queryset
 
     def filter_by_pet_name_pattern(self, queryset):
